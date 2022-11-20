@@ -6,7 +6,7 @@ const routes = {
   fanLog: "/pages/fanLog.html",
   profile: "/pages/profile.html",
 };
-import { getCommentList } from "./pages/fanLog.js";
+import { getCommentList } from "./pages/mainpage.js";
 
 export const handleLocation = async () => {
   let path = window.location.hash.replace("#", "");
@@ -25,7 +25,7 @@ export const handleLocation = async () => {
   document.getElementById("root").innerHTML = html;
 
   // 특정 화면 렌더링 되자마자 DOM 조작 처리
-  if (path === "fanLog") {
+  if (path === "mainpage") {
     // 로그인한 회원의 프로필사진과 닉네임을 화면에 표시해줌.
     document.getElementById("nickname").textContent =
       authService.currentUser.displayName ?? "닉네임 없음";
@@ -35,7 +35,7 @@ export const handleLocation = async () => {
 
     getCommentList();
   }
-  if (path === "profile") {
+  if (path === "mypage") {
     // 프로필 관리 화면 일 때 현재 프로필 사진과 닉네임 할당
     document.getElementById("profileView").src =
       authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
