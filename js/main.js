@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // 로그인 상태이므로 항상 팬명록 화면으로 이동
       if (hash === "") {
         // 로그인 상태에서는 로그인 화면으로 되돌아갈 수 없게 설정
-        window.location.replace("#fanLog");
+        window.location.replace("#mypage");
       }
     } else {
       // 로그아웃 상태이므로 로그인 화면으로 강제 이동
