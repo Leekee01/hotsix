@@ -1,0 +1,79 @@
+<div id="mypage">
+  <header>
+    <div class="in_header">
+      <ul class="menu">
+        <li class="logo">
+          <a href="#" onclick="route()"> HOTSIX </a>
+        </li>
+        <!-- logo end -->
+
+        <li><a href="#" onclick="route()">커뮤니티</a></li>
+      </ul>
+      <!-- menu end -->
+
+      <div class="util_wrap">
+        <ul class="util">
+          <li>
+            <input
+              type="search"
+              id="search_icon"
+              placeholder="검색어를 입력하시오."
+            />
+            <div class="material-icons" id="material-icons_search">search</div>
+          </li>
+
+          <li>
+            <div class="material-icons" id="material-icons_book_mark">
+              turned_in_not
+            </div>
+          </li>
+
+          <li>
+            <div class="material-icons" id="material-icons_nofi">
+              notifications_active
+            </div>
+          </li>
+
+          <li class="profile_img">
+            <img src="./image/profile_img.png" alt="profile_img" />
+          </li>
+
+          <li>
+            <button type="button" class="btn btn-dark">글쓰기</button>
+          </li>
+        </ul>
+      </div>
+      <!-- util_wrap end -->
+    </div>
+    <!-- in_header end -->
+  </header>
+
+  <div class="mypage_profile">
+    <form id="profileForm" onsubmit="changeProfile(event)">
+      <label id="imgLabel" for="imgInput">
+        <img id="profileView" src="./image/profile_img.png" />
+        <input
+          onchange="onFileChange(event)"
+          id="imgInput"
+          type="file"
+          accept="images/*"
+        />
+      </label>
+      <div>
+        <input
+          id="profileNickname"
+          type="text"
+          placeholder="현재 닉네임"
+          value=""
+        />
+      </div>
+      <br />
+      <input id="profileBtn" type="submit" value="프로필 변경" />
+    </form>
+  </div>
+
+  <hr />
+  <p align="center" class="mypost">내포스트</p>
+  <hr />
+  <div id="comment-list"></div>
+</div>
