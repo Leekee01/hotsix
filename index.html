@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTSIX</title>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!--사이트의 icon을 자유롭게 사용하기 위해서-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- font style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.transit.min.js"></script>
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+    
+        * { margin:0; padding:0; }
+        a { text-decoration:none; color:black; }
+        a:hover {
+            font-weight:600;
+            color:black;
+        }
+        ul { list-style:none; padding:0; }
+        img { border:0; display:block; }
+
+        #wrap {
+            width:100%;
+        }
+
+        header {
+            width:100%;
+            height:80px;
+
+            border-bottom:1px solid #ccc;
+        }
+
+        header > .in_header {
+            width:auto;
+            height:100%;
+
+            margin:0 270px;
+
+            line-height:80px;
+
+            position:relative;
+
+            display:flex;
+        }
+
+        .menu {
+            width:auto;
+            height:100%;
+
+            display:flex;
+
+            position:absolute;
+            left:0;
+        }
+
+        .menu>li {
+            padding-right:60px;
+
+            font-size:16px;
+        }
+
+        .logo>a {
+            font-size:26px;
+            font-weight:500;
+        }
+
+        .logo>a:hover {
+            font-weight:600;
+        }
+
+        .util_wrap {
+            width:auto;
+            height:100%;
+
+            position:absolute;
+            right:0;
+        }
+
+        .util {
+            display:flex;
+            align-items: center;
+        }
+
+        .util > li {
+            margin-right:22px;
+        }
+
+        .util>li:last-child {
+            margin-right:0;
+        }
+
+        #search_icon {
+            width:314px;
+            height:42px;
+            padding:10px 10px 10px 46px;
+            background-color:#EEEEEE;
+
+            border:1px solid #B1B1B1;
+            border-radius:30px;
+            
+            position:relative;
+
+            color:rgb(175, 175, 175);
+
+            box-sizing:border-box;
+
+            outline:none;
+        }
+
+        .material-icons {
+            display:block;
+        }
+
+        #material-icons_search {
+            position:absolute;
+            top:37%;
+            left:2%;
+        }
+
+        #material-icons_book_mark {
+            font-size:30px;
+        }
+
+        #material-icons_nofi {
+            font-size:30px;
+        }
+
+        .profile_img {
+            width:45px;
+            height:45px;
+            
+            border-radius:50%;
+        }
+
+        .profile_img > img {
+            width:100%;
+            height:100%;
+
+            border-radius:50%;
+        }
+
+        .btn.btn-dark {
+            width:103px;
+            height:40px;
+            border-radius:20px;
+        }
+
+        .sub_header {
+            width:100%;
+            height:54px;
+
+            border-bottom:1px solid #ccc;
+        }
+
+        .sub_header > .in_header {
+            width:auto;
+            height:100%;
+
+            margin:0 270px;
+
+            line-height:54px;
+
+            position:relative;
+        }
+
+        .sub_menu {
+            display:flex;
+        }
+
+        .sub_menu > li {
+            width:10%;
+
+            text-align:center;
+        }
+
+        .active {
+            border-bottom:4px solid #000;
+        }
+
+        .container {
+            max-width:1380px;
+            width: auto;
+            height: 100%;
+            margin: 0 270px;
+            padding:0;
+
+            position: relative;
+        }
+
+        section {
+            width:100%;
+
+            float:left;
+        }
+
+        .issue_contents {
+            width:100%;
+            height:540px;
+            margin-top:35px;
+        }
+
+        .swiper.mySwiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-backface-hidden {
+            height:100%;
+
+            border-radius:10px;
+        }
+
+        .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            background-color:#fff;
+        }
+
+        .issue_contents_bg {
+            height:100%;
+            padding:100px;
+
+            box-sizing:border-box;
+
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-end;
+            align-items: flex-start;
+
+            color:white;
+        }
+
+        #issue_contents_bg_1 {
+            background-image:url("image/coding.png");
+            background-size:cover;
+            background-position:center;
+            background-repeat:none;
+        }
+
+        #issue_contents_bg_2 {
+            background-image:url("image/coding_2.png");
+            background-size:cover;
+            background-position:center;
+            background-repeat:none;
+        }
+
+        #issue_contents_bg_3 {
+            background-image:url("image/study.png");
+            background-size:cover;
+            background-position:center;
+            background-repeat:none;
+        }
+
+        .issue_contents_bg::before {
+            content: "";
+            opacity: 0.5;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #000;
+        }
+
+        /* .mySwiper .swiper-prev {
+            position: absolute;
+            left:20px;
+            top: 46%;
+    
+            z-index: 99999;
+        }
+
+        .mySwiper .siwper-next {
+            position: absolute;
+            right:20px;
+            top: 46%;
+    
+            z-index: 99999;
+        }
+
+        .mySwiper .swiper-prev .material-icons {
+            font-size:40px;
+            color:white;
+        }
+
+        .mySwiper .swiper-next .material-icons {
+            font-size:40px;
+            color:white;
+        } */
+
+        h1.img_title {
+            z-index:9999;
+
+            font-weight:600;
+        }
+
+        .profile {
+            margin-top:20px;
+
+            display:flex;
+
+            line-height:42px;
+
+            z-index:9999;
+        }
+
+        .profile > p {
+            margin-left:12px;
+        }
+
+        .swiper.mySwiper.swiper-horizontal>.swiper-pagination-progressbar, .swiper-pagination-progressbar.swiper-pagination-horizontal, .swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite, .swiper-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+            width: 84%;
+            height: 4px;
+
+            left: 8%;
+            top: 90%;    
+        }
+
+
+        .write > .container {
+            padding:50px 0;
+
+            border-bottom:1px solid #969696;
+
+            display:flex;
+            align-items:center;
+        }
+
+        .posting {
+            width:100%;
+            height:80px;
+            margin-left:20px;
+
+            position:relative;
+        }
+
+        #text_icon {
+            width:100%;
+            height:100%;
+            padding:20px;
+
+            border:1px solid #9c9c9c;
+            border-radius:50px;
+
+            outline:none;
+        }
+
+        .btn.btn-link {
+            width:50px;
+            height:50px;
+
+            border:1px solid #9c9c9c;
+            border-radius:50px;
+
+            position:absolute;
+            top:20%;
+            right:20px;
+
+            color:black;
+        }
+
+        #material-icons_edit {
+            font-size:20px;
+        }
+
+        .all_post_list {
+            margin-bottom:100px;
+        }
+
+        #all_post_list_1 {
+            margin-bottom:0;
+        }
+
+        .see_posting {
+            width:100%;
+            height:835px;
+            padding:65px;
+            margin-top:24px;
+            background-color:#eee;
+
+            border-radius:50px;
+
+            box-sizing:border-box;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .text_wrap > h1 {
+            font-size:50px;
+            font-weight:600;
+        }
+
+        .text_wrap > p {
+            margin-top:38px;
+
+            font-size:20px;
+
+        }
+
+        .all_post > .container {
+            margin-top:50px;
+            margin-bottom:120px;
+        } 
+        
+        .profile > p {
+            font-size:17px;
+        }
+
+        .profile_name {
+            font-size:18px;
+            font-weight:600;
+        }
+
+        .line_1 {
+            margin-left:10px;
+        }
+
+        .time {
+            line-height:0px;
+            color:rgb(122, 122, 122);
+        }
+
+        .follow {
+            font-size:18px;
+            font-weight:600;
+
+            cursor:pointer;
+        }
+
+
+        .btn.btn-link_2 {
+            width:72px;
+            height:36px;
+            margin-right:10px;
+            background-color:white;
+
+            border:1px solid #989898;
+            border-radius:50px;
+        }
+
+        #material-icons_comment {
+            float:left;
+        }
+
+        #material-icons_see {
+            float:left;
+        }
+
+
+        footer {
+            width:100%;
+            background-color:black;
+
+            float:left;
+
+            color:white;
+        }
+
+        footer a {
+            color:rgb(146, 146, 146);
+        }
+        
+        .in_footer {
+            margin: 50px 270px;
+            
+            position:relative;
+        }
+
+        .footer_util {
+            display:flex;
+            padding-bottom:30px;
+
+            border-bottom:1px solid rgb(149, 149, 149);
+        }
+
+        .footer_util > li {
+            margin-right:100px;
+
+            font-size:14px;
+        }
+
+        .footer_util > li:hover a {
+            color:white;
+        }
+
+        .footer_logo {
+            margin-top:30px;
+            margin-bottom:30px;
+
+            font-size:24px;
+            font-weight:600;
+        }
+
+        .footer_logo a {
+            color:#cbcbcb;
+        }
+
+        .copyright {
+            font-size:15px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrap">
+
+        <header>
+            <div class="in_header">
+
+                <ul class="menu">
+
+                    <li class="logo">
+                        <a href="#">
+                            HOTSIX
+                        </a>
+                    </li>
+                    <!-- logo end -->
+
+                    <li><a href="#">커뮤니티</a></li>
+
+                </ul>
+                <!-- menu end -->
+
+                
+                <div class="util_wrap">           
+
+                    <ul class="util">
+
+                        <li>
+                            <input type="search" id="search_icon" placeholder="검색어를 입력하시오.">
+                            <div class="material-icons" id="material-icons_search">search</div>
+                        </li>
+
+                        <li>
+                            <div class="material-icons" id="material-icons_book_mark">turned_in_not</div>
+                        </li>
+
+                        <li>
+                            <div class="material-icons" id="material-icons_nofi">notifications_active</div>
+                        </li>
+
+                        <li class="profile_img">
+                            <img src="./image/profile_img.png" alt="profile_img">
+                        </li>
+
+                        <li>
+                            <button type="button" class="btn btn-dark">글쓰기</button>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+                <!-- util_wrap end -->
+
+            </div>
+            <!-- in_header end -->
+        </header>
+
+        <div class="sub_header">
+
+            <div class="in_header">
+
+                <ul class="sub_menu">
+ 
+                    <li><a href="#">HOME</a></li>
+
+                    <li><a href="#">FOLLOWING</a></li>
+
+                    <li><a href="#">HTML</a></li>
+
+                    <li><a href="#">CSS</a></li>
+
+                    <li><a href="#">JAVASCRIPT</a></li>
+
+                    <li><a href="#">PYTHON</a></li>
+
+                    <li><a href="#">REACT</a></li>
+
+                    <li><a href="#">GIT</a></li>
+
+                    <li><a href="#">ALGORITHM</a></li>
+
+                    <li><a href="#">Q&A</a></li>
+
+                </ul>
+                <!-- sub_menu end -->
+                
+            </div>
+
+        </div>
+        <!-- sub_header end -->
+
+
+        <section class="issue_contents">
+
+
+            <div class="container">
+
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+
+                            <div class="issue_contents_bg" id="issue_contents_bg_1">
+          
+                                <h1 class="img_title">
+                                    개발을 어떻게 하는 거냐구요?
+                                </h1>
+
+                                <div class="profile">
+
+                                    <div class="profile_img">
+                                        <img src="./image/profile_img.png" alt="profile_img">
+                                    </div>
+
+                                    <p>내 이름은 아기 상어</p>
+                                    
+                                </div>
+
+                            </div>
+                            <!-- issue_contents_bg end -->
+
+                        </div>
+
+                        <div class="swiper-slide">
+
+                            <div class="issue_contents_bg" id="issue_contents_bg_2">
+          
+                                <h1 class="img_title">
+                                    프론트엔드 개발자가 되려면?
+                                </h1>
+
+                                <div class="profile">
+
+                                    <div class="profile_img">
+                                        <img src="./image/flower.jpg" alt="profile_img">
+                                    </div>
+
+                                    <p>나는 미래의 개발자</p>
+                                    
+                                </div>
+
+                            </div>
+                            <!-- issue_contents_bg end -->
+
+                        </div>
+
+                        <div class="swiper-slide">
+
+                            <div class="issue_contents_bg" id="issue_contents_bg_3">
+          
+                                <h1 class="img_title">
+                                    공부를 습관화해야 합니다!
+                                </h1>
+
+                                <div class="profile">
+
+                                    <div class="profile_img">
+                                        <img src="./image/puppy.jpg" alt="profile_img">
+                                    </div>
+
+                                    <p>코린이</p>
+                                    
+                                </div>
+
+                            </div>
+                            <!-- issue_contents_bg end -->
+
+                        </div>
+
+                    </div>
+                    <!-- swiper-wrapper end -->
+
+                    <div class="swiper-pagination"></div>
+
+                    <div class="swiper-prev">
+                        <span class="material-icons">arrow_back</span>
+                    </div>
+
+                    <div class="swiper-next">
+                        <span class="material-icons">arrow_forward</span>
+                    </div>
+
+                </div>
+                <!-- mySwiper end -->
+
+            </div>
+            <!-- container end -->
+
+
+        </section>
+        <!-- issue_contents end -->
+
+        <section class="write">
+
+            <div class="container">
+
+                <div class="profile_img">
+                    <img src="./image/profile_img.png" alt="profile_img">
+                </div>
+
+                <div class="posting">
+
+                    <input type="text" id="text_icon" placeholder="어떤 이야기를 나누고 싶나요?">
+
+                    <button type="button" class="btn btn-link">
+                        <div class="material-icons" id="material-icons_edit">edit</div>
+                    </button>
+
+                </div>
+                <!-- posting end-->
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- write end -->
+
+
+        <section class="all_post">
+
+            <div class="container">
+
+                <div class="all_post_list">
+
+                    <div class="profile">
+
+                        <div class="profile_img">
+                            <img src="./image/profile_img.png" alt="profile_img">
+                        </div>
+
+                        <div class="line_1">
+
+                            <p><span class="profile_name">내 이름은 아기 상어</span>님이 글을 공유하셨습니다.</p>
+
+                            <p class="time">약 한 시간 전</p>
+
+                        </div>
+
+                        <p class="follow">팔로우</p>
+
+                    </div>
+                    <!-- profile-->
+
+                    <div class="see_posting">
+
+                        <div class="text_wrap">
+
+                            <h1>개발은 이렇게!</h1>
+                            <p>개발은 어려운 것이 아닙니다!</p>
+
+                        </div>
+                        <!-- text_wrap end -->
+
+                        <div class="buttons">
+
+                            <button type="button" class="btn btn-link_2">
+                                <div class="material-icons" id="material-icons_comment">question_answer</div>
+                                <div class="number">0</div>
+                            </button>
+
+                            <button type="button" class="btn btn-link_2">
+                                <div class="material-icons" id="material-icons_see">visibility</div>
+                                <div class="number">5</div>
+                            </button>
+
+                        </div>
+                        <!-- buttons -->
+
+                    </div>
+                    <!-- see_posting end -->
+
+                </div>
+                <!-- all_post_list end -->
+
+                <div class="all_post_list">
+
+                    <div class="profile">
+
+                        <div class="profile_img">
+                            <img src="./image/illusion.jpg" alt="profile_img">
+                        </div>
+
+                        <div class="line_1">
+
+                            <p><span class="profile_name">즐거운 코딩</span>님이 글을 공유하셨습니다.</p>
+
+                            <p class="time">약 세 시간 전</p>
+
+                        </div>
+
+                        <p class="follow">팔로우</p>
+
+                    </div>
+                    <!-- profile-->
+
+                    <div class="see_posting">
+
+                        <div class="text_wrap">
+
+                            <h1>Javascript란?</h1>
+                            <p>Javascript는 실습이 중요합니다!</p>
+
+                        </div>
+                        <!-- text_wrap end -->
+
+                        <div class="buttons">
+
+                            <button type="button" class="btn btn-link_2">
+                                <div class="material-icons" id="material-icons_comment">question_answer</div>
+                                <div class="number">5</div>
+                            </button>
+
+                            <button type="button" class="btn btn-link_2">
+                                <div class="material-icons" id="material-icons_see">visibility</div>
+                                <div class="number">6</div>
+                            </button>
+
+                        </div>
+                        <!-- buttons -->
+
+                    </div>
+                    <!-- see_posting end -->
+
+                </div>
+                <!-- all_post_list end -->
+
+                <div class="all_post_list" id="all_post_list_1">
+
+                    <div class="profile">
+
+                        <div class="profile_img">
+                            <img src="./image/illusion_2.jpg" alt="profile_img">
+                        </div>
+
+                        <div class="line_1">
+
+                            <p><span class="profile_name">자바스크립트의 신</span>님이 글을 공유하셨습니다.</p>
+
+                            <p class="time">약 세 시간 전</p>
+
+                        </div>
+
+                        <p class="follow">팔로우</p>
+
+                    </div>
+                    <!-- profile-->
+
+                    <div class="see_posting">
+
+                        <div class="text_wrap">
+
+                            <h1>공부는 재밌습니다</h1>
+                            <p>그러니까 공부하세요 여러분</p>
+
+                        </div>
+                        <!-- text_wrap end -->
+
+                        <div class="buttons">
+
+                            <button type="button" class="btn btn-link_2">
+                                <div class="material-icons" id="material-icons_comment">question_answer</div>
+                                <div class="number">4</div>
+                            </button>
+
+                            <button type="button" class="btn btn-link_2">
+                                <div class="material-icons" id="material-icons_see">visibility</div>
+                                <div class="number">20</div>
+                            </button>
+
+                        </div>
+                        <!-- buttons -->
+
+                    </div>
+                    <!-- see_posting end -->
+
+                </div>
+                <!-- all_post_list end -->
+
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- all_post end -->
+
+
+        <footer>
+
+            <div class="in_footer">
+
+                <ul class="footer_util">
+     
+                    <li><a href="#">이용약관</a></li>
+
+                    <li><a href="#">개인정보처리방침</a></li>
+
+                </ul>
+
+                <div class="footer_logo">
+                    <a href="#">HOTSIX</a>
+                </div>
+
+                <div class="copyright">
+                    <p>ⓒ 2022 HOXSIX COMPANY. ALL RIGHTS RESERVED..</p>
+                </div>
+
+            </div>
+            <!-- in_footer end-->
+       
+        </footer>
+
+    </div>
+    <!-- wrap end -->
+
+</body>
+</html>
