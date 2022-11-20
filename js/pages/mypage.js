@@ -35,7 +35,7 @@ export const changeProfile = async (event) => {
   })
     .then(() => {
       alert("프로필 수정 완료");
-      window.location.hash = "#fanLog";
+      window.location.hash = "#mainpage";
     })
     .catch((error) => {
       alert("프로필 수정 실패");
