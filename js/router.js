@@ -3,8 +3,8 @@ import { authService } from "./firebase.js";
 const routes = {
   404: "/pages/404.html",
   "/": "/pages/auth.html",
-  fanLog: "/pages/fanLog.html",
-  profile: "/pages/profile.html",
+  mainpage: "/pages/mainpage.html",
+  mypage: "/pages/mypage.html",
 };
 import { getCommentList } from "./pages/mainpage.js";
 
