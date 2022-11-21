@@ -21,6 +21,10 @@ body {
 }
 
 .join-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   width: 360px;
   height: 640px;
 
@@ -148,27 +152,4 @@ body {
   color: black;
   text-decoration-line: none;
   font-size: 13px;
-}
-
-.last {
-  margin: 20px;
-}
-
-.last-link {
-  font-size: 13px;
-  text-decoration-line: none;
-  margin: 10px;
-  color: rgb(195, 190, 190);
-}
-
-.language {
-  margin: 20px;
-}
-
-.language-list {
-  border: 1px solid rgb(195, 190, 190);
-  border-radius: 5px;
-
-  padding: 8px;
-  box-sizing: border-box;
 }
