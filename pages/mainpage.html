@@ -191,18 +191,23 @@
 
         <div class="see_posting">
           <div class="text_wrap">
-            <h1>개발은 이렇게!</h1>
             <p>개발은 어려운 것이 아닙니다!</p>
           </div>
           <!-- text_wrap end -->
 
           <div class="buttons">
-            <button type="button" class="btn btn-dark" div="postDEleteButton">
-              삭제
+            <button onclick="onEditing(event)" class="editBtn btn btn-dark">
+              수정
             </button>
 
-            <button type="button" class="btn btn-dark" div="postModifyButton">
-              수정
+            <button
+              name="${
+                cmtObj.id
+              }"
+              onclick="delete_comment(event)"
+              class="deleteBtn btn btn-dark"
+            >
+              삭제
             </button>
           </div>
           <!-- buttons -->
