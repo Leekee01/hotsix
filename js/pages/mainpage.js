@@ -12,15 +12,15 @@ import { dbService, authService } from "../firebase.js";
 
 export const save_comment = async (event) => {
   event.preventDefault();
-  const comment = document.getElementById("comment");
-  const { uid, photoURL, displayName } = authService.currentUser;
+  const comment = document.getElementById("text_icon");
+  // const { uid, photoURL, displayName } = authService.currentUser;
   try {
     await addDoc(collection(dbService, "comments"), {
       text: comment.value,
       createdAt: Date.now(),
-      creatorId: uid,
-      profileImg: photoURL,
-      nickname: displayName,
+      // creatorId: uid,
+      // profileImg: photoURL,
+      // nickname: displayName,
     });
     comment.value = "";
     getCommentList();
@@ -95,48 +95,37 @@ export const getCommentList = async () => {
     };
     cmtObjList.push(commentObj);
   });
-  const commnetList = document.getElementById("comment-list");
-  const currentUid = authService.currentUser.uid;
+  const commnetList = document.getElementById("all_post_list");
+  // const currentUid = authService.currentUser.uid;
   commnetList.innerHTML = "";
   cmtObjList.forEach((cmtObj) => {
-    const isOwner = currentUid === cmtObj.creatorId;
-    const temp_html = `<div class="all_post_list">
-          <div class="profile">
-            <div class="profile_img">
-              <img src="${cmtObj.profileImg}" alt="profile_img" />
-            </div>
+    // const isOwner = currentUid === cmtObj.creatorId;
+    const temp_html = `
+                        <div class="all_post_list">
+                          <div class="profile">
+                            <div class="profile_img">
+                              <img src="./image/profile_img.png" alt="profile_img" />
+                            </div>
 
-            <div class="line_1">
-              <p>
-                <span class="profile_name">${cmtObj.nickname}</span>님이 글을
-                공유하셨습니다.
-              </p>
+                            <div class="line_1">
+                              <p>
+                                <span class="profile_name">내 이름은 아기 상어</span>님이 글을
+                                공유하셨습니다.
+                              </p>
 
-              <p class="time">약 ${cmtObj.time} 전</p>
-            </div>
+                              <p class="time">${cmtObj.createdAt}</p>
+                            </div>
 
-            <p class="follow">팔로우</p>
-          </div>
+                            <p class="follow">팔로우</p>
+                          </div>
 
-          <div class="see_posting">
-
-            <div class="text_wrap">
-              <p>${cmtObj.content}</p>
-            </div>
-
-            <div class="buttons">
-              <div class="${isOwner ? "updateBtns" : "noDisplay"}">
-                  <button onclick="onEditing(event)" class="editBtn btn btn-dark">수정</button>
-                  
-                  <button name="${
-                    cmtObj.id
-                  }" onclick="delete_comment(event)" class="deleteBtn btn btn-dark">삭제</button>
-              </div>
-            </div>
-
-          </div>
-
-      </div>`;
+                          <div class="see_posting">
+                            <div class="text_wrap">
+                              <p>${cmtObj.text}</p>
+                            </div>
+                          </div>
+                      </div>
+                          `;
 
     const div = document.createElement("div");
     div.classList.add("mycards");

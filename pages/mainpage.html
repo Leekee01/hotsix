@@ -158,7 +158,11 @@
           placeholder="어떤 이야기를 나누고 싶나요?"
         />
 
-        <button type="button" class="btn btn-link">
+        <button
+          type="button"
+          class="btn btn-link"
+          onclick="save_comment(event)"
+        >
           <div class="material-icons" id="material-icons_edit">edit</div>
         </button>
       </div>
@@ -170,7 +174,7 @@
 
   <section class="all_post">
     <div class="container">
-      <div class="all_post_list">
+      <div id="all_post_list" class="all_post_list">
         <div class="profile">
           <div class="profile_img">
             <img src="./image/profile_img.png" alt="profile_img" />
