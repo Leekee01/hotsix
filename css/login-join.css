@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  font-family: "Pretendard-Regular";
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background-color: rgb(209, 202, 202);
+}
+
+.join-tab {
+  width: 360px;
+  height: 640px;
+
+  background-color: white;
+
+  border: 1px solid rgb(195, 190, 190);
+  border-radius: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  margin: 30px;
+}
+
+.header_text {
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+.header_text_2 {
+  font-size: 25px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.email-form_text {
+  width: 290px;
+
+  padding: 5px;
+}
+.email-form_text_span {
+  display: flex;
+  align-items: flex-start;
+
+  font-size: 13px;
+}
+
+.email-input {
+  width: 290px;
+  height: 40px;
+
+  border-radius: 10px;
+  border: 1px solid rgb(195, 190, 190);
+
+  padding: 20px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.email-form_btn {
+  width: 290px;
+  height: 40px;
+
+  border-radius: 30px;
+  background-color: black;
+  color: white;
+
+  margin: 20px;
+}
+
+.email-form > .email-form_btn:hover {
+  color: rgb(195, 190, 190);
+}
+
+.center-text {
+  font-size: 13px;
+  margin: 0;
+  color: rgb(195, 190, 190);
+}
+
+.icon-group {
+  margin: 10px;
+  align-items: space-between;
+}
+
+.icon-group > .icon-group_btn:hover {
+  /* transform: scale(1.4);
+  transition: transform 0.3s; */
+  color: rgb(195, 190, 190);
+}
+
+.icon-group_btn {
+  border: none;
+  background-color: transparent;
+
+  margin: 0 30px;
+}
+
+.icon-group_btn_icon {
+  /* . */
+}
+
+.icon-group_btn_text {
+  color: rgb(195, 190, 190);
+  margin: 5px;
+}
+
+.join {
+  margin: 20px;
+}
+.join > a {
+  margin-left: 10px;
+}
+
+.join-text {
+  color: rgb(195, 190, 190);
+  font-size: 13px;
+}
+
+.join-link {
+  color: black;
+  text-decoration-line: none;
+  font-size: 13px;
+}
+
+.last {
+  margin: 20px;
+}
+
+.last-link {
+  font-size: 13px;
+  text-decoration-line: none;
+  margin: 10px;
+  color: rgb(195, 190, 190);
+}
+
+.language {
+  margin: 20px;
+}
+
+.language-list {
+  border: 1px solid rgb(195, 190, 190);
+  border-radius: 5px;
+
+  padding: 8px;
+  box-sizing: border-box;
+}
