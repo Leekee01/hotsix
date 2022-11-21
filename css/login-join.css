@@ -34,17 +34,16 @@ body {
   border-radius: 20px;
 }
 
-.header {
+.join-tab > .header {
   display: flex;
   flex-direction: column;
   text-align: center;
-
-  margin: 30px;
+  padding-bottom: 110px;
+  border-bottom: 0;
 }
 
 .header_text {
   font-size: 12px;
-  margin-bottom: 30px;
 }
 
 .header_text_2 {
@@ -125,10 +124,6 @@ body {
   background-color: transparent;
 
   margin: 0 30px;
-}
-
-.icon-group_btn_icon {
-  /* . */
 }
 
 .icon-group_btn_text {

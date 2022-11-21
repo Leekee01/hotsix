@@ -123,6 +123,19 @@ export const getCommentList = async () => {
                             <div class="text_wrap">
                               <p>${cmtObj.text}</p>
                             </div>
+                            <div class="buttons">
+                            <div class="buttons">
+                              <button onclick="onEditing(event)" class="editBtn btn btn-dark">
+                                수정
+                              </button>
+                              <button
+                                name="${cmtObj.id}"
+                                onclick="delete_comment(event)"
+                                class="deleteBtn btn btn-dark"
+                              >
+                                삭제
+                              </button>
+                            </div>
                           </div>
                       </div>
                           `;
