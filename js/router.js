@@ -2,7 +2,7 @@ import { authService } from "./firebase.js";
 
 const routes = {
   404: "/pages/404.html",
-  "/": "/pages/auth.html",
+  "/": "/pages/mainpage.html",
   mainpage: "/pages/mainpage.html",
   mypage: "/pages/mypage.html",
 };
