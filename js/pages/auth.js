@@ -9,9 +9,10 @@ import {
   signOut,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
-// 로그인 성공 시 팬명록 화면으로 이동
+// 로그인 성공 시 화면으로 이동
 export const handleAuth = (event) => {
   event.preventDefault();
+  console.log(event);
   const email = document.getElementById("email");
   const emailVal = email.value;
   const pw = document.getElementById("pw");
@@ -46,13 +47,13 @@ export const handleAuth = (event) => {
   // 유효성 검사 통과 후 로그인 또는 회원가입 API 요청
   const authBtnText = document.querySelector("#authBtn").value;
   if (authBtnText === "로그인") {
-    // 유효성검사 후 로그인 성공 시 팬명록 화면으로
+    // 유효성검사 후 로그인 성공 시 화면으로
 
     signInWithEmailAndPassword(authService, emailVal, pwVal)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        window.location.hash = "#fanLog";
+        window.location.hash = "#mainpage";
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -82,28 +83,11 @@ export const handleAuth = (event) => {
   }
 };
 
-// 로그인, 회원가입 화면 토글링 기능
-export const onToggle = () => {
-  const authBtn = document.querySelector("#authBtn");
-  const authToggle = document.querySelector("#authToggle");
-  const authTitle = document.querySelector("#authTitle");
-  if (authBtn.value === "로그인") {
-    authBtn.value = "회원가입";
-    authToggle.textContent = "로그인 화면으로";
-    authTitle.textContent = "회원가입 페이지";
-  } else {
-    authBtn.value = "로그인";
-    authToggle.textContent = "회원가입 화면으로";
-    authTitle.textContent = "로그인 페이지";
-  }
-};
-
-export const socialLogin = (event) => {
-  const { name } = event.target;
+export const socialLogin = (str) => {
   let provider;
-  if (name === "google") {
+  if (str === "google") {
     provider = new GoogleAuthProvider();
-  } else if (name === "github") {
+  } else if (str === "github") {
     provider = new GithubAuthProvider();
   }
   signInWithPopup(authService, provider)
