@@ -13,15 +13,15 @@ import { dbService, authService } from "../firebase.js";
 export const save_comment = async (event) => {
   event.preventDefault();
   const comment = document.getElementById("text_icon");
-  const { uid } = authService.currentUser;
-  // photoURL, displayName
+  const { uid, photoURL, displayName } = authService.currentUser;
+
   try {
     await addDoc(collection(dbService, "comments"), {
       text: comment.value,
       createdAt: Date.now(),
       creatorId: uid,
-      // profileImg: photoURL,
-      // nickname: displayName,
+      profileImg: photoURL,
+      nickname: displayName,
     });
     comment.value = "";
     getCommentList();
@@ -105,12 +105,16 @@ export const getCommentList = async () => {
                         <div class="all_post_list">
                           <div class="profile">
                             <div class="profile_img">
-                              <img src="./image/profile_img.png" alt="profile_img" />
+                              <img src="${
+                                cmtObj.profileImg
+                              }"  alt="profile_img"/>
                             </div>
 
                             <div class="line_1">
                               <p>
-                                <span class="profile_name">내 이름은 아기 상어</span>님이 글을
+                                <span class="profile_name">${
+                                  cmtObj.nickname ?? "닉네임 없음"
+                                }</span>님이 글을
                                 공유하셨습니다.
                               </p>
 
