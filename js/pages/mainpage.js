@@ -13,12 +13,13 @@ import { dbService, authService } from "../firebase.js";
 export const save_comment = async (event) => {
   event.preventDefault();
   const comment = document.getElementById("text_icon");
-  // const { uid, photoURL, displayName } = authService.currentUser;
+  const { uid } = authService.currentUser;
+  // photoURL, displayName
   try {
     await addDoc(collection(dbService, "comments"), {
       text: comment.value,
       createdAt: Date.now(),
-      // creatorId: uid,
+      creatorId: uid,
       // profileImg: photoURL,
       // nickname: displayName,
     });
@@ -96,10 +97,10 @@ export const getCommentList = async () => {
     cmtObjList.push(commentObj);
   });
   const commnetList = document.getElementById("all_post_list");
-  // const currentUid = authService.currentUser.uid;
+  const currentUid = authService.currentUser.uid;
   commnetList.innerHTML = "";
   cmtObjList.forEach((cmtObj) => {
-    // const isOwner = currentUid === cmtObj.creatorId;
+    const isOwner = currentUid === cmtObj.creatorId;
     const temp_html = `
                         <div class="all_post_list">
                           <div class="profile">
@@ -113,7 +114,9 @@ export const getCommentList = async () => {
                                 공유하셨습니다.
                               </p>
 
-                              <p class="time">${cmtObj.createdAt}</p>
+                              <p class="time">${new Date(cmtObj.createdAt)
+                                .toString()
+                                .slice(0, 25)}</p>
                             </div>
 
                             <p class="follow">팔로우</p>
@@ -123,8 +126,7 @@ export const getCommentList = async () => {
                             <div class="text_wrap">
                               <p>${cmtObj.text}</p>
                             </div>
-                            <div class="buttons">
-                            <div class="buttons">
+                            <div class="${isOwner ? "buttons" : "noDisplay"}">
                               <button onclick="onEditing(event)" class="editBtn btn btn-dark">
                                 수정
                               </button>

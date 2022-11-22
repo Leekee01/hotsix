@@ -28,11 +28,11 @@ export const handleLocation = async () => {
   // 특정 화면 렌더링 되자마자 DOM 조작 처리
   if (path === "mainpage") {
     // 로그인한 회원의 프로필사진과 닉네임을 화면에 표시해줌.
-    document.getElementById("nickname").textContent =
-      authService.currentUser.displayName ?? "닉네임 없음";
+    // document.getElementById("nickname").textContent =
+    //   authService.currentUser.displayName ?? "닉네임 없음";
 
-    document.getElementById("profileImg").src =
-      authService.currentUser.photoURL ?? "../assets/blankProfile.webp";
+    // document.getElementById("profileImg").src =
+    //   authService.currentUser.photoURL ?? "../assets/blankProfile.webp";
 
     getCommentList();
   }
