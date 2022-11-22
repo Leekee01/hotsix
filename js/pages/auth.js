@@ -12,7 +12,6 @@ import {
 // 로그인 성공 시 화면으로 이동
 export const handleAuth = (event) => {
   event.preventDefault();
-  console.log(event);
   const email = document.getElementById("email");
   const emailVal = email.value;
   const pw = document.getElementById("pw");

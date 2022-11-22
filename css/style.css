@@ -752,3 +752,7 @@ footer a {
 .copyright {
   font-size: 15px;
 }
+
+.noDisplay {
+  display: none;
+}

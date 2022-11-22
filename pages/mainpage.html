@@ -189,59 +189,9 @@
 
   <section class="all_post">
     <div class="container">
-      <div id="all_post_list" class="all_post_list">
-        <div class="profile">
-          <div class="profile_img">
-            <img
-              src="/assets/blankProfile.webp"
-              id="profileImg"
-              alt="profile_img"
-            />
-          </div>
-
-          <div class="line_1">
-            <p>
-              <span class="profile_name" id="nickname">내 이름은 아기 상어</span
-              >님이 글을 공유하셨습니다.
-            </p>
-
-            <p class="time">약 한 시간 전</p>
-          </div>
-
-          <p class="follow">팔로우</p>
-        </div>
-        <!-- profile-->
-
-        <div class="see_posting">
-          <div class="text_wrap">
-            <p>개발은 어려운 것이 아닙니다!</p>
-          </div>
-          <!-- text_wrap end -->
-
-          <div class="buttons">
-            <button onclick="onEditing(event)" class="editBtn btn btn-dark">
-              수정
-            </button>
-
-            <button
-              name="${
-                cmtObj.id
-              }"
-              onclick="delete_comment(event)"
-              class="deleteBtn btn btn-dark"
-            >
-              삭제
-            </button>
-          </div>
-          <!-- buttons -->
-        </div>
-        <!-- see_posting end -->
-      </div>
-      <!-- all_post_list end -->
+      <div id="all_post_list" class="all_post_list"></div>
     </div>
-    <!-- container end -->
   </section>
-  <!-- all_post end -->
 
   <footer>
     <div class="in_footer">
