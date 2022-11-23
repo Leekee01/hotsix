@@ -170,25 +170,26 @@ export const getCommentList = async () => {
   commentImage.appendChild(img);
 };
 
-// $(document).ready(function () {
-//   new Swiper(".container .mySwiper", {
-//     slidesPerView: 1,
-//     spaceBetween: 0,
-//     slidesPerGroup: 1,
-//     autoplay: true,
-//     delay: 5000,
-//     loop: true,
-//     loopFillGroupWithBlank: true,
-//     pagination: {
-//       el: ".swiper-pagination",
-//       clickable: true,
-//       type: "progressbar", //동그라미 버튼을 진행상황을 나타내는 바로 변경
-//     },
-//     navigation: {
-//       nextEl: ".swiper-next",
-//       prevEl: ".swiper-prev",
-//     },
-//   });
+export const creatSwiper = () => {
+  new Swiper(".container .mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    slidesPerGroup: 1,
+    autoplay: true,
+    delay: 5000,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      type: "progressbar", //동그라미 버튼을 진행상황을 나타내는 바로 변경
+    },
+    navigation: {
+      nextEl: ".swiper-next",
+      prevEl: ".swiper-prev",
+    },
+  });
+};
 
 //   // 어떻게 구현해야 할지 아무리 머리 굴려도 떠오르지 않아 모조리 넣었습니다. . .
 //   // for이나 if문으로 li의 index를 추출할 수 있으면 좋겠는데. . .
@@ -363,4 +364,3 @@ export const getCommentList = async () => {
 //   document
 //     .querySelector(".sub_menu>li:nth-child(10)")
 //     .addEventListener("click", onClick10);
-// });

@@ -7,7 +7,7 @@ const routes = {
   mainpage: "/pages/mainpage.html",
   mypage: "/pages/mypage.html",
 };
-import { getCommentList } from "./pages/mainpage.js";
+import { getCommentList, creatSwiper } from "./pages/mainpage.js";
 
 export const handleLocation = async () => {
   let path = window.location.hash.replace("#", "");
@@ -24,6 +24,10 @@ export const handleLocation = async () => {
   const route = routes[path] || routes[404];
   const html = await fetch(route).then((data) => data.text());
   document.getElementById("root").innerHTML = html;
+
+  if (path === "mainpage") {
+    creatSwiper();
+  }
 
   // 특정 화면 렌더링 되자마자 DOM 조작 처리
   if (path === "mainpage" || path === "mypage") {
