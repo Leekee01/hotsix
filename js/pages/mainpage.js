@@ -71,7 +71,7 @@ export const update_comment = async (event) => {
 export const delete_comment = async (event) => {
   event.preventDefault();
   const id = event.target.name;
-  const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
+  const ok = window.confirm("해당 글을 정말 삭제하시겠습니까?");
   if (ok) {
     try {
       await deleteDoc(doc(dbService, "comments", id));
@@ -104,15 +104,15 @@ export const getCommentList = async () => {
     const temp_html = `
                         <div class="all_post_list">
                           <div class="profile">
-                            <div class="profile_img">
+                            <div class="profile_img" id="profile_img">
                               <img src="${
-                                cmtObj.profileImg
+                                cmtObj.profileImg ?? "/assets/blankProfile.webp"
                               }"  alt="profile_img"/>
                             </div>
 
                             <div class="line_1">
                               <p>
-                                <span class="profile_name">${
+                                <span class="profile_name" id="profile_name">${
                                   cmtObj.nickname ?? "닉네임 없음"
                                 }</span>님이 글을
                                 공유하셨습니다.
@@ -154,6 +154,7 @@ export const getCommentList = async () => {
 
   const { photoURL } = authService.currentUser;
   const commentImage = document.getElementById("profile_img");
+  commentImage.innerHTML = "";
 
   const temp_html2 = `
                         <div class="profile_img" id="profile_img">
@@ -190,177 +191,3 @@ export const creatSwiper = () => {
     },
   });
 };
-
-//   // 어떻게 구현해야 할지 아무리 머리 굴려도 떠오르지 않아 모조리 넣었습니다. . .
-//   // for이나 if문으로 li의 index를 추출할 수 있으면 좋겠는데. . .
-
-//   function onClick1() {
-//     $(".sub_menu>li:nth-child(1)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick2() {
-//     $(".sub_menu>li:nth-child(2)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick3() {
-//     $(".sub_menu>li:nth-child(3)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick4() {
-//     $(".sub_menu>li:nth-child(4)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick5() {
-//     $(".sub_menu>li:nth-child(5)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick6() {
-//     $(".sub_menu>li:nth-child(6)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick7() {
-//     $(".sub_menu>li:nth-child(7)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick8() {
-//     $(".sub_menu>li:nth-child(8)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick9() {
-//     $(".sub_menu>li:nth-child(9)").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//     $(".sub_menu>li:nth-child(10)").removeClass("active");
-//   }
-
-//   function onClick10() {
-//     $(".sub_menu>li:nth-child(10").addClass("active");
-
-//     $(".sub_menu>li:nth-child(1)").removeClass("active");
-//     $(".sub_menu>li:nth-child(3)").removeClass("active");
-//     $(".sub_menu>li:nth-child(4)").removeClass("active");
-//     $(".sub_menu>li:nth-child(5)").removeClass("active");
-//     $(".sub_menu>li:nth-child(6)").removeClass("active");
-//     $(".sub_menu>li:nth-child(7)").removeClass("active");
-//     $(".sub_menu>li:nth-child(8)").removeClass("active");
-//     $(".sub_menu>li:nth-child(9)").removeClass("active");
-//     $(".sub_menu>li:nth-child(2)").removeClass("active");
-//   }
-
-//   document
-//     .querySelector(".sub_menu>li:nth-child(1)")
-//     .addEventListener("click", onClick1);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(2)")
-//     .addEventListener("click", onClick2);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(3)")
-//     .addEventListener("click", onClick3);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(4)")
-//     .addEventListener("click", onClick4);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(5)")
-//     .addEventListener("click", onClick5);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(6)")
-//     .addEventListener("click", onClick6);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(7)")
-//     .addEventListener("click", onClick7);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(8)")
-//     .addEventListener("click", onClick8);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(9)")
-//     .addEventListener("click", onClick9);
-//   document
-//     .querySelector(".sub_menu>li:nth-child(10)")
-//     .addEventListener("click", onClick10);

@@ -12,6 +12,20 @@ import {
 
 // url 바뀌면 handleLocation 실행하여 화면 변경
 window.addEventListener("hashchange", handleLocation);
+window.addEventListener("hashchange", function () {
+  authService.onAuthStateChanged((user) => {
+    const hash = window.location.hash;
+    if (user) {
+      if (hash === "" || hash === "#join") {
+        window.location.replace("#mainpage");
+      }
+    } else {
+      if (hash !== "") {
+        window.location.replace("");
+      }
+    }
+  });
+});
 
 // 첫 랜딩 또는 새로고침 시 handleLocation 실행하여 화면 변경
 document.addEventListener("DOMContentLoaded", function () {
@@ -22,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const hash = window.location.hash;
     if (user) {
       // 로그인 상태이므로 항상 팬명록 화면으로 이동
-      if (hash === "") {
+      if (hash === "" || hash === "#" || hash === "#join") {
         // 로그인 상태에서는 로그인 화면으로 되돌아갈 수 없게 설정
         window.location.replace("#mainpage");
       }
