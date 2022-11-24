@@ -398,7 +398,7 @@ header > .in_header {
 }
 
 #profileBtn {
-  padding: 16px 80px 20px;
+  padding: 16px 65px 20px;
   border-radius: 10px;
   border: none;
 }
@@ -970,7 +970,7 @@ footer a {
   margin-top: 20px;
 }
 
-.buttons > button {
+.modal_main > .modal_content > .buttons > button {
   margin-top: 35px;
   border: 1px solid black;
   border-radius: 10px;
