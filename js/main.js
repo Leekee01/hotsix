@@ -16,12 +16,12 @@ window.addEventListener("hashchange", function () {
   authService.onAuthStateChanged((user) => {
     const hash = window.location.hash;
     if (user) {
-      if (hash === "" || hash === "#join") {
+      if (hash === "" || hash === "join") {
         window.location.replace("#mainpage");
       }
     } else {
       if (hash !== "") {
-        window.location.replace("");
+        window.location.replace("#join");
       }
     }
   });
