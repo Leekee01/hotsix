@@ -34,38 +34,32 @@ export const save_comment = async (event) => {
 export const onEditing = (event) => {
   // 수정버튼 클릭
   event.preventDefault();
-  const udBtns = document.querySelectorAll(".editBtn, .deleteBtn");
-  udBtns.forEach((udBtn) => (udBtn.disabled = "true"));
+  const modalTop = document.getElementById("modal_top");
+  modalTop.style.display = "block";
+  modalTop.dataset.modalId = event.target.name;
 
-  const cardBody = event.target.parentNode.parentNode;
-  const commentText = cardBody.children[0].children[0];
-  const commentInputP = cardBody.children[0].children[1];
+  console.log(event.target.name);
+};
 
-  commentText.classList.add("noDisplay");
-  commentInputP.classList.add("d-flex");
-  commentInputP.classList.remove("noDisplay");
-  commentInputP.children[0].focus();
+export const updateCancelbutton = (event) => {
+  event.preventDefault();
+  const modalCancel = document.getElementById("modal_top");
+  modalCancel.style.display = "none";
 };
 
 export const update_comment = async (event) => {
   event.preventDefault();
-  const newComment = event.target.parentNode.children[0].value;
-  const id = event.target.parentNode.id;
+  const newComment = document.getElementById("editContent").value;
+  const modal_top = document.getElementById("modal_top");
 
-  const parentNode = event.target.parentNode.parentNode;
-  const commentText = parentNode.children[0];
-  commentText.classList.remove("noDisplay");
-  const commentInputP = parentNode.children[1];
-  commentInputP.classList.remove("d-flex");
-  commentInputP.classList.add("noDisplay");
-
-  const commentRef = doc(dbService, "comments", id);
-  try {
-    await updateDoc(commentRef, { text: newComment });
-    getCommentList();
-  } catch (error) {
-    alert(error);
-  }
+  console.log(modal_top.getAttribute("data-modalId"));
+  // const commentRef = doc(dbService, "comments", uid);
+  // try {
+  //   await updateDoc(commentRef, { text: newComment });
+  //   getCommentList();
+  // } catch (error) {
+  //   alert(error);
+  // }
 };
 
 export const delete_comment = async (event) => {
@@ -131,7 +125,9 @@ export const getCommentList = async () => {
                               <p>${cmtObj.text}</p>
                             </div>
                             <div class="${isOwner ? "buttons" : "noDisplay"}">
-                              <button onclick="onEditing(event)" class="editBtn btn btn-dark">
+                              <button onclick="onEditing(event)" class="editBtn btn btn-dark" id="edit_button" name="${
+                                cmtObj.id
+                              }">
                                 수정
                               </button>
                               <button

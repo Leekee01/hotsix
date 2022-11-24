@@ -8,6 +8,7 @@ import {
   update_comment,
   onEditing,
   delete_comment,
+  updateCancelbutton,
 } from "./pages/mainpage.js";
 
 // url 바뀌면 handleLocation 실행하여 화면 변경
@@ -60,3 +61,4 @@ window.save_comment = save_comment;
 window.update_comment = update_comment;
 window.onEditing = onEditing;
 window.delete_comment = delete_comment;
+window.updateCancelbutton = updateCancelbutton;

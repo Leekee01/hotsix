@@ -902,3 +902,61 @@ footer a {
 .noDisplay {
   display: none;
 }
+
+/* 모달 시작 */
+
+.modal_main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 99999;
+  top: 0;
+  display: none;
+}
+
+.modal_content {
+  position: absolute;
+  width: 600px;
+  height: 550px;
+  background-color: white;
+  border-radius: 20px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -225px;
+  margin-left: -300px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.modal_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.buttons > button {
+  margin-top: 35px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px 40px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 17px;
+}
+
+.modal_content > textarea {
+  border: 1px solid rgb(195, 190, 190);
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  padding: 30px;
+  width: 500px;
+  height: 320px;
+  resize: none;
+}
+
+/* 모달 끝 */

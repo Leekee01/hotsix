@@ -14,11 +14,7 @@
       <div class="util_wrap">
         <ul class="util">
           <li>
-            <input
-              type="search"
-              id="search_icon"
-              placeholder="검색어를 입력하시오."
-            />
+            <input type="search" id="search_icon" placeholder="검색어를 입력하시오." />
             <div class="material-icons" id="material-icons_search">search</div>
           </li>
 
@@ -36,21 +32,12 @@
 
           <a href="#mypage">
             <li class="profile_img">
-              <img
-                src="image/icons8-writer-male-96.png"
-                id="profileImg"
-                alt="profile_img"
-              />
+              <img src="image/icons8-writer-male-96.png" id="profileImg" alt="profile_img" />
             </li>
           </a>
 
           <li>
-            <button
-              type="button"
-              class="btn btn-dark"
-              id="logOutButton"
-              onclick="logout()"
-            >
+            <button type="button" class="btn btn-dark" id="logOutButton" onclick="logout()">
               로그아웃
             </button>
           </li>
@@ -160,17 +147,9 @@
     <div class="container">
       <div class="profile_img" id="profile_img"></div>
       <div class="posting">
-        <input
-          type="text"
-          id="text_icon"
-          placeholder="어떤 이야기를 나누고 싶나요?"
-        />
+        <input type="text" id="text_icon" placeholder="어떤 이야기를 나누고 싶나요?" />
 
-        <button
-          type="button"
-          class="btn btn-link"
-          onclick="save_comment(event)"
-        >
+        <button type="button" class="btn btn-link" onclick="save_comment(event)">
           <div class="material-icons" id="material-icons_edit">edit</div>
         </button>
       </div>
@@ -185,6 +164,7 @@
       <div id="all_post_list" class="all_post_list"></div>
     </div>
   </section>
+
 
   <footer>
     <div class="in_footer">
@@ -204,5 +184,19 @@
     </div>
     <!-- in_footer end-->
   </footer>
+
 </div>
 <!-- wrap end -->
+
+<!-- 모달입니다. -->
+<div class="modal_main" id="modal_top">
+  <div class="modal_content">
+    내용을 변경하시겠어요?
+    <textarea placeholder="글을 수정하세요." id="editContent"></textarea>
+    <div class="buttons">
+      <button style="margin-right:20px;" onclick="update_comment(event)">제출</button>
+      <button id="modal_cancel" onclick="updateCancelbutton(event)">취소</button>
+    </div>
+  </div>
+</div>
+<!-- 모달입니다. -->
