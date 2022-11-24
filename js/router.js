@@ -8,6 +8,7 @@ const routes = {
   mypage: "/pages/mypage.html",
 };
 import { getCommentList, creatSwiper } from "./pages/mainpage.js";
+import { myPageGetCommentList } from "./pages/mypage.js";
 
 export const handleLocation = async () => {
   let path = window.location.hash.replace("#", "");
@@ -25,23 +26,18 @@ export const handleLocation = async () => {
   const html = await fetch(route).then((data) => data.text());
   document.getElementById("root").innerHTML = html;
 
+  // 특정 화면 렌더링 되자마자 DOM 조작 처리
   if (path === "mainpage") {
+    getCommentList();
     creatSwiper();
   }
 
-  // 특정 화면 렌더링 되자마자 DOM 조작 처리
-  if (path === "mainpage" || path === "mypage") {
-    getCommentList();
-  }
   if (path === "mypage") {
     // 프로필 관리 화면 일 때 현재 프로필 사진과 닉네임 할당
     document.getElementById("profileView").src =
       authService.currentUser.photoURL ?? "/assets/blankProfile.webp";
     document.getElementById("profileNickname").placeholder =
       authService.currentUser.displayName ?? "닉네임 없음";
+    myPageGetCommentList();
   }
-};
-
-export const goToProfile = () => {
-  window.location.hash = "#profile";
 };

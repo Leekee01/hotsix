@@ -1,7 +1,7 @@
 import { handleAuth, logout } from "./pages/auth.js";
 import { changeProfile, onFileChange } from "./pages/mypage.js";
 import { socialLogin } from "./pages/auth.js";
-import { handleLocation, goToProfile } from "./router.js";
+import { handleLocation } from "./router.js";
 import { authService } from "./firebase.js";
 import {
   save_comment,
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // onclick, onchange, onsubmit 이벤트 핸들러 리스트
 window.handleAuth = handleAuth;
-window.goToProfile = goToProfile;
 window.socialLogin = socialLogin;
 window.logout = logout;
 window.onFileChange = onFileChange;

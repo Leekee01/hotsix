@@ -35,10 +35,11 @@ export const onEditing = (event) => {
   // 수정버튼 클릭
   event.preventDefault();
   const modalTop = document.getElementById("modal_top");
+  const prevText = document.getElementById("prevText").textContent;
+  const newComment = document.getElementById("editContent");
   modalTop.style.display = "block";
-  modalTop.dataset.modalId = event.target.name;
-
-  console.log(event.target.name);
+  newComment.value = prevText;
+  localStorage.setItem("data", event.target.name);
 };
 
 export const updateCancelbutton = (event) => {
@@ -49,17 +50,19 @@ export const updateCancelbutton = (event) => {
 
 export const update_comment = async (event) => {
   event.preventDefault();
-  const newComment = document.getElementById("editContent").value;
-  const modal_top = document.getElementById("modal_top");
-
-  console.log(modal_top.getAttribute("data-modalId"));
-  // const commentRef = doc(dbService, "comments", uid);
-  // try {
-  //   await updateDoc(commentRef, { text: newComment });
-  //   getCommentList();
-  // } catch (error) {
-  //   alert(error);
-  // }
+  const modalTop = document.getElementById("modal_top");
+  const newComment = document.getElementById("editContent");
+  const docId = localStorage.getItem("data");
+  const commentRef = doc(dbService, "comments", docId);
+  try {
+    await updateDoc(commentRef, { text: newComment.value });
+    getCommentList();
+    newComment.value = "";
+  } catch (error) {
+    alert(error);
+  }
+  localStorage.clear();
+  modalTop.style.display = "none";
 };
 
 export const delete_comment = async (event) => {
@@ -121,8 +124,8 @@ export const getCommentList = async () => {
                           </div>
 
                           <div class="see_posting">
-                            <div class="text_wrap">
-                              <p>${cmtObj.text}</p>
+                            <div id="editText" class="text_wrap">
+                              <p id="prevText">${cmtObj.text}</p>
                             </div>
                             <div class="${isOwner ? "buttons" : "noDisplay"}">
                               <button onclick="onEditing(event)" class="editBtn btn btn-dark" id="edit_button" name="${

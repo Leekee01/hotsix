@@ -55,7 +55,7 @@ export const onFileChange = (event) => {
   };
 };
 
-export const getCommentList = async () => {
+export const myPageGetCommentList = async () => {
   let cmtObjList = [];
   const q = query(
     collection(dbService, "comments"),
@@ -74,12 +74,13 @@ export const getCommentList = async () => {
   commnetList.innerHTML = "";
   cmtObjList.forEach((cmtObj) => {
     const isOwner = currentUid === cmtObj.creatorId;
-    const temp_html = ` 
+    if (isOwner === true) {
+      const temp_html = ` 
                         <div class="all_post_list">
                           <div class="profile">
                             <div class="profile_img">
                               <img src="${
-                                cmtObj.profileImg
+                                cmtObj.profileImg ?? "/assets/blankProfile.webp"
                               }"  alt="profile_img"/>
                             </div>
 
@@ -118,9 +119,11 @@ export const getCommentList = async () => {
                           </div>
                       </div>
     `;
-    const div = document.createElement("div");
-    div.classList.add("mycards");
-    div.innerHTML = temp_html;
-    commnetList.appendChild(div);
+
+      const div = document.createElement("div");
+      div.classList.add("mycards");
+      div.innerHTML = temp_html;
+      commnetList.appendChild(div);
+    }
   });
 };
