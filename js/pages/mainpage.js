@@ -32,13 +32,13 @@ export const save_comment = async (event) => {
 };
 
 export const onEditing = (event) => {
-  // 수정버튼 클릭
   event.preventDefault();
   const modalTop = document.getElementById("modal_top");
-  const prevText = document.getElementById("prevText").textContent;
+  const prevBody = event.target.parentNode.parentNode;
+  const prevContent = prevBody.children[0].children[0].innerText;
   const newComment = document.getElementById("editContent");
   modalTop.style.display = "block";
-  newComment.value = prevText;
+  newComment.value = prevContent;
   localStorage.setItem("data", event.target.name);
 };
 
